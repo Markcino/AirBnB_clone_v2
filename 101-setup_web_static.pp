@@ -27,60 +27,72 @@ package { 'nginx':
 } ->
 
 file { '/data':
-  ensure  => 'directory'
+  ensure  => 'directory',
+  force   => true
 } ->
 
 file { '/data/web_static':
-  ensure => 'directory'
+  ensure => 'directory',
+  force  => true
 } ->
 
 file { '/data/web_static/releases':
-  ensure => 'directory'
+  ensure => 'directory',
+  force  => true
 } ->
 
 file { '/data/web_static/releases/test':
-  ensure => 'directory'
+  ensure => 'directory',
+  force  => true
 } ->
 
 file { '/data/web_static/shared':
-  ensure => 'directory'
+  ensure => 'directory',
+  force  => true
 } ->
 
 file { '/data/web_static/releases/test/index.html':
   ensure  => 'present',
-  content => "Holberton School Puppet\n"
+  content => "Holberton School Puppet\n",
+  force   => true
 } ->
 
 file { '/data/web_static/current':
   ensure => 'link',
-  target => '/data/web_static/releases/test'
+  target => '/data/web_static/releases/test',
+  force  => true
 } ->
 
-exec { 'chown -R ubuntu:ubuntu /data/':
+exec { 'chown -R root:root /data/':
   path => '/usr/bin/:/usr/local/bin/:/bin/'
 }
 
 file { '/var/www':
-  ensure => 'directory'
+  ensure => 'directory',
+  force  => true
 } ->
 
 file { '/var/www/html':
-  ensure => 'directory'
+  ensure => 'directory',
+  force  => true
 } ->
 
 file { '/var/www/html/index.html':
   ensure  => 'present',
-  content => "Holberton School Nginx\n"
+  content => "Holberton School Nginx\n",
+  force   => true
 } ->
 
 file { '/var/www/html/404.html':
   ensure  => 'present',
-  content => "Ceci n'est pas une page\n"
+  content => "Ceci n'est pas une page\n",
+  force   => true
 } ->
 
 file { '/etc/nginx/sites-available/default':
   ensure  => 'present',
-  content => $nginx_conf
+  content => $nginx_conf,
+  force   => true
 } ->
 
 exec { 'nginx restart':
