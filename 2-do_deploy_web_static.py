@@ -20,7 +20,7 @@ def do_deploy(archive_path):
         sudo('mkdir -p {}{}/'.format(path, no_ext))
         sudo('tar -xzf /tmp/{} -C {}{}/'.format(file_n, path, no_ext))
         sudo('rm /tmp/{}'.format(file_n))
-        sudo('mv {0}{1}/web_static/* {0}{1}/'.format(path, no_ext))
+        sudo('rsync -a {0}{1}/web_static/ {0}{1}/'.format(path, no_ext))
         sudo('rm -rf {}{}/web_static'.format(path, no_ext))
         sudo('rm -rf /data/web_static/current')
         sudo('ln -s {}{}/ /data/web_static/current'.format(path, no_ext))
