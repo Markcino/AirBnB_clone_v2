@@ -63,7 +63,7 @@ file { '/data/web_static/current':
   force  => true
 } ->
 
-exec { 'chown -R root:root /data/':
+exec { 'chown -R ubuntu:ubuntu /data/':
   path => '/usr/bin/:/usr/local/bin/:/bin/'
 }
 
