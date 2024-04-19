@@ -8,8 +8,7 @@ fab -f 100-clean_web_static.py do_clean:number=2
 import os
 from fabric.api import *
 
-env.hosts = ['54.173.215.228']
-
+env.hosts = ['54.173.215.228', '52.86.173.54']
 
 def do_clean(number=0):
     """Delete out-of-date archives.
