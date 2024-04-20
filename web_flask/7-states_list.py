@@ -6,6 +6,9 @@ start Flask application
 from flask import Flask, render_template
 from models import *
 from models import storage
+from models.state import State
+from sqlalchemy.orm import *
+
 app = Flask(__name__)
 
 
